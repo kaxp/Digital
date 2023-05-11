@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_base_template_1/config/flavor_config.dart';
+import 'package:flutter_base_template_1/modules/app/base_app_module.dart';
+import 'package:flutter_base_template_1/modules/app/root_app.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 void runMain({
   required FlavorConfig Function() configInit,
@@ -9,6 +12,13 @@ void runMain({
 }) async {
   runZonedGuarded<Future<void>>(() async {
     await _init(configInit: configInit);
+
+    runApp(
+      ModularApp(
+        module: BaseAppModule(),
+        child: const RootApp(),
+      ),
+    );
   }, (error, stack) {
     final details = FlutterErrorDetails(exception: error, stack: stack);
     if (dumpErrorToConsole) {
