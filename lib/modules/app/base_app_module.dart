@@ -1,4 +1,5 @@
-import 'package:flutter_base_template_1/main.dart';
+import 'package:flutter_base_template_1/modules/detail/pages/detail_page.dart';
+import 'package:flutter_base_template_1/modules/home/pages/home_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class BaseAppModule extends Module {
@@ -12,11 +13,11 @@ class BaseAppModule extends Module {
           BaseAppModuleRoutes.homePage,
           child: (context, args) => HomePage(),
         ),
-        ChildRoute(BaseAppModuleRoutes.detailPage, child: (context, args) => SecondPage()),
+        ChildRoute(BaseAppModuleRoutes.detailPage, child: (context, args) => DetailPage()),
       ];
 }
 
 class BaseAppModuleRoutes {
   static const String homePage = '/';
-  static const String detailPage = '/home';
+  static const String detailPage = '/detail';
 }
