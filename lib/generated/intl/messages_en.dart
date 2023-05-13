@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "detailPage": MessageLookupByLibrary.simpleMessage("Detail Page"),
         "homePage": MessageLookupByLibrary.simpleMessage("Home Page"),
         "navigateToDetailPage":
-            MessageLookupByLibrary.simpleMessage("Navigate to Detail Page")
+            MessageLookupByLibrary.simpleMessage("Navigate to Detail Page"),
+        "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
+            "Something went wrong while connecting to the server. Please try again")
       };
 }

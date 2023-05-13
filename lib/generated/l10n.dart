@@ -89,6 +89,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Something went wrong while connecting to the server. Please try again`
+  String get somethingWentWrong {
+    return Intl.message(
+      'Something went wrong while connecting to the server. Please try again',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

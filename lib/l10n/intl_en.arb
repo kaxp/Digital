@@ -2,6 +2,7 @@
     "homePage": "Home Page",
     "navigateToDetailPage": "Navigate to Detail Page",
     "detailPage": "Detail Page",
-    "backToHome": "Back to Home"
-  }
+    "backToHome": "Back to Home",
+    "somethingWentWrong": "Something went wrong while connecting to the server. Please try again"
+}
   
