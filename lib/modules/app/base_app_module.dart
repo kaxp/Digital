@@ -1,5 +1,5 @@
-import 'package:flutter_base_template_1/modules/detail/pages/detail_page.dart';
-import 'package:flutter_base_template_1/modules/home/pages/home_page.dart';
+import 'package:flutter_base_template_1/modules/detail/detail_module.dart';
+import 'package:flutter_base_template_1/modules/home/home_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class BaseAppModule extends Module {
@@ -8,12 +8,14 @@ class BaseAppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        // TODO(kaxp): Update the ChildRoute to ModuleRoute in follow-up PR.
-        ChildRoute(
+        ModuleRoute(
           BaseAppModuleRoutes.homePage,
-          child: (context, args) => HomePage(),
+          module: HomeModule(),
         ),
-        ChildRoute(BaseAppModuleRoutes.detailPage, child: (context, args) => DetailPage()),
+        ModuleRoute(
+          BaseAppModuleRoutes.detailPage,
+          module: DetailModule(),
+        ),
       ];
 }
 
