@@ -9,20 +9,18 @@ import 'package:flutter/material.dart';
 /// [defaultHttpClient], when user is not authenticated
 /// [authenticationHttpClient], when user is authenticated, etc.
 ///
-/// We can also add the base options, headers, data transformers, 
+/// We can also add the base options, headers, data transformers,
 /// interceptors, etc. in the available http clients.
 
 // default timeout value in milliseconds
 const kReceiveTimeout = 60000;
 const kConnectTimeout = 60000;
 
-const String headerDeviceId = 'X-SAFECASH-DEVICE-ID';
-const String headerAuthorization = 'Authorization';
-const String headerKeyPlatform = 'platform';
-const String headerVersionCode = 'versionCode';
-const String forceUpdateErrorCode = '2000';
+const String paramClientId = 'client_id';
 
-Dio defaultHttpClient() {
+Dio defaultHttpClient({
+  required String clientId,
+}) {
   final dio = Dio();
 
   // set default timeout value
@@ -30,6 +28,9 @@ Dio defaultHttpClient() {
     receiveTimeout: const Duration(milliseconds: kReceiveTimeout),
     connectTimeout: const Duration(milliseconds: kConnectTimeout),
   );
+
+  // add [client_id] query param to each api call
+  dio.options.queryParameters[paramClientId] = clientId;
 
   dio.interceptors.add(LogInterceptor(logPrint: (msg) => debugPrint(msg.toString())));
 
