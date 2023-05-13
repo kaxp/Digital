@@ -8,7 +8,7 @@ void main() async {
       flavor: Flavor.staging,
       values: FlavorValues(
         baseUrl: NetworkConstants.stagingBaseUrl,
-        authorization: NetworkConstants.stagingAuthorization,
+        clientId: NetworkConstants.stagingClientId,
       ),
     ),
     dumpErrorToConsole: true,

@@ -14,7 +14,7 @@ void main() async {
       flavor: Flavor.production,
       values: FlavorValues(
         baseUrl: NetworkConstants.prodBaseUrl,
-        authorization: NetworkConstants.prodAuthorization,
+        clientId: NetworkConstants.prodClientId,
       ),
     ),
     dumpErrorToConsole: false,
