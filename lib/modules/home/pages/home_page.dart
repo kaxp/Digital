@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
-import 'package:flutter_base_template_1/modules/app/base_app_module.dart';
+import 'package:flutter_base_template_1/modules/detail/detail_module.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,9 +13,11 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => Modular.to.navigate(
-            BaseAppModuleRoutes.detailPage,
-          ),
+          onPressed: () {
+            Modular.to.pushNamed(
+              DetailRoute.moduleRoute,
+            );
+          },
           child: Text(
             S.current.navigateToDetailPage,
           ),
