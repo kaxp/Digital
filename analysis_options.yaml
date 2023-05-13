@@ -9,6 +9,14 @@
 # packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  exclude:
+    # ignore warnings in files from json_serializable, built_value and most generators
+    - "**/*.g.dart"
+  errors:
+    # ignore warnings when adding TODO comments
+    todo: ignore
+
 linter:
   rules:
     always_declare_return_types: false
