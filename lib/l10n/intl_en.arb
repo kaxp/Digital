@@ -3,6 +3,10 @@
     "navigateToDetailPage": "Navigate to Detail Page",
     "detailPage": "Detail Page",
     "backToHome": "Back to Home",
-    "somethingWentWrong": "Something went wrong while connecting to the server. Please try again"
+    "somethingWentWrong": "Something went wrong while connecting to the server. Please try again",
+    "networkErrorMessage": "Make sure you are connected to an internet connection and please try again.",
+    "networkRequestCanceled": "Request cancelled",
+    "invalidClientIdError": "Client Id is invalid, please check and try again",
+    "unknownError": "Sorry, something went wrong"
 }
   
