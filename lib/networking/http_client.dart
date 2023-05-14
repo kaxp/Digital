@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_template_1/networking/interceptors/request_interceptor.dart';
 
 /// In this file we will define all of our http clients that
 /// will be used for calling APIs, like
@@ -33,6 +34,8 @@ Dio defaultHttpClient({
   dio.options.queryParameters[paramClientId] = clientId;
 
   dio.interceptors.add(LogInterceptor(logPrint: (msg) => debugPrint(msg.toString())));
+
+  dio.interceptors.add(RequestInterceptor());
 
   // add ssl certificate check
   (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate = _onHttpClientCreateWithCertificateCheck;
