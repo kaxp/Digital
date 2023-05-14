@@ -4,7 +4,7 @@ import 'package:flutter_base_template_1/networking/retrofit/home_api_client.dart
 class HomeRepo {
   final HomeApiClient _homeApiClient = HomeApiClient.withAuthenticatedDio();
 
-  Future<HomeEventsResponse> getEventByEventId() async {
-    return _homeApiClient.getEventByEventId(6009891);
+  Future<HomeEventsResponse> getEventByEventId({required int eventId}) async {
+    return _homeApiClient.getEventByEventId(eventId);
   }
 }
