@@ -25,9 +25,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "backToHome": MessageLookupByLibrary.simpleMessage("Back to Home"),
         "detailPage": MessageLookupByLibrary.simpleMessage("Detail Page"),
         "homePage": MessageLookupByLibrary.simpleMessage("Home Page"),
+        "invalidClientIdError": MessageLookupByLibrary.simpleMessage(
+            "Client Id is invalid, please check and try again"),
         "navigateToDetailPage":
             MessageLookupByLibrary.simpleMessage("Navigate to Detail Page"),
+        "networkErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Make sure you are connected to an internet connection and please try again."),
+        "networkRequestCanceled":
+            MessageLookupByLibrary.simpleMessage("Request cancelled"),
         "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
-            "Something went wrong while connecting to the server. Please try again")
+            "Something went wrong while connecting to the server. Please try again"),
+        "unknownError":
+            MessageLookupByLibrary.simpleMessage("Sorry, something went wrong")
       };
 }

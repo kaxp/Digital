@@ -99,6 +99,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Make sure you are connected to an internet connection and please try again.`
+  String get networkErrorMessage {
+    return Intl.message(
+      'Make sure you are connected to an internet connection and please try again.',
+      name: 'networkErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request cancelled`
+  String get networkRequestCanceled {
+    return Intl.message(
+      'Request cancelled',
+      name: 'networkRequestCanceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Client Id is invalid, please check and try again`
+  String get invalidClientIdError {
+    return Intl.message(
+      'Client Id is invalid, please check and try again',
+      name: 'invalidClientIdError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, something went wrong`
+  String get unknownError {
+    return Intl.message(
+      'Sorry, something went wrong',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
