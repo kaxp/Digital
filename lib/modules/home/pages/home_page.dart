@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_template_1/components/atoms/typography/header2.dart';
 import 'package:flutter_base_template_1/components/molecules/app_bar/custom_appbar.dart';
-import 'package:flutter_base_template_1/components/organisms/list_views/events_list_view.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_fonts.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_images.dart';
 import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
-import 'package:flutter_base_template_1/modules/detail/detail_module.dart';
 import 'package:flutter_base_template_1/modules/home/bloc/home_bloc.dart';
 import 'package:flutter_base_template_1/modules/search/search_module.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,14 +82,6 @@ class _HomePageState extends State<HomePage> {
                   fontFamily: AppFonts.ratBold,
                   fontWeight: FontWeight.w700,
                 ),
-              ),
-              EventsListView(
-                isFavorite: true,
-                onTap: () {
-                  Modular.to.pushNamed(
-                    DetailRoute.moduleRoute,
-                  );
-                },
               ),
             ],
           ),
