@@ -7,6 +7,8 @@
     "invalidClientIdError": "Client Id is invalid, please check and try again",
     "unknownError": "Sorry, something went wrong",
     "myFavouriteEvents" : "My Favourite events",
-    "searchEvents" : "Search events..."
+    "searchEvents" : "Search events...",
+    "searchForEvents" : "Search for the latest events, shows, concerts and much more!!!",
+    "noResultFound" : "Sorry, no matching result found!\nPlease try searching with a different input."
 }
   
