@@ -4,7 +4,13 @@ import 'package:flutter_base_template_1/networking/retrofit/search_api_client.da
 class SearchRepo {
   final SearchApiClient _searchApiClient = SearchApiClient.withDefaultDio();
 
-  Future<EventsResponse> fetchEvents(String searchString) async {
-    return _searchApiClient.getEventsData(searchString);
+  Future<EventsResponse> fetchEvents({
+    required String searchString,
+    required int page,
+  }) async {
+    return _searchApiClient.getEventsData(
+      search: searchString,
+      page: page,
+    );
   }
 }
