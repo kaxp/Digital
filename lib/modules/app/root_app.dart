@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_base_template_1/config/themes/app_theme.dart';
 import 'package:flutter_base_template_1/constants/widget_keys.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,10 +19,7 @@ class RootApp extends StatelessWidget {
 
     return MaterialApp.router(
       title: 'Flutter template',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: AppTheme.defaultTheme,
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
       debugShowCheckedModeBanner: false,
