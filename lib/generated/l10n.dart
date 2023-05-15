@@ -139,6 +139,16 @@ class S {
       args: [],
     );
   }
+
+  /// `My Favourite events`
+  String get myFavouriteEvents {
+    return Intl.message(
+      'My Favourite events',
+      name: 'myFavouriteEvents',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
