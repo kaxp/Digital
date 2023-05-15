@@ -6,6 +6,7 @@
     "networkRequestCanceled": "Request cancelled",
     "invalidClientIdError": "Client Id is invalid, please check and try again",
     "unknownError": "Sorry, something went wrong",
-    "myFavouriteEvents" : "My Favourite events"
+    "myFavouriteEvents" : "My Favourite events",
+    "searchEvents" : "Search events..."
 }
   
