@@ -27,6 +27,7 @@ class SearchBloc extends Cubit<SearchState> {
     }
 
     try {
+      emit(SearchLoading());
       final response = await _searchRepo.fetchEvents(
         searchString: searchString,
         page: state.page,
