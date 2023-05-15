@@ -7,4 +7,5 @@ mixin AppColors {
   static const Color blackColor = Color(0xff141414);
   static const Color disabledColor = Colors.grey;
   static const Color lightGreyColor = Color(0xff969696);
+  static const Color offWhiteColor = Color(0x8AFFFFFF);
 }
