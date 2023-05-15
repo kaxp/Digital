@@ -12,7 +12,7 @@ class SearchBloc extends Cubit<SearchState> {
 
   final _searchRepo = Modular.get<SearchRepo>();
 
-  Future<void> searchLocation(String? searchString) async {
+  Future<void> fetchEvents(String? searchString) async {
     if (searchString == null || searchString.length <= 2) {
       emit(
         SearchLoaded(),
