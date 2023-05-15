@@ -1,4 +1,4 @@
-enum Flavor { staging, production }
+enum Flavor { staging, production, mock }
 
 class FlavorValues {
   const FlavorValues({
@@ -27,4 +27,6 @@ class FlavorConfig {
   static bool isProduction() => _instance?.flavor == Flavor.production;
 
   static bool isStaging() => _instance?.flavor == Flavor.staging;
+
+  static bool isMock() => _instance?.flavor == Flavor.mock;
 }
