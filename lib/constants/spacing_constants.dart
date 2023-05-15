@@ -3,6 +3,7 @@
 /// A collection of spacing constants.
 /// Usage: Layout padding, Layout margin.
 
+const kSpacingZero = 0.0;
 const kSpacingXxSmall = 4.0;
 const kSpacingXSmall = 8.0;
 const kSpacingSmall = 12.0;

@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "homePage": MessageLookupByLibrary.simpleMessage("Home Page"),
         "invalidClientIdError": MessageLookupByLibrary.simpleMessage(
             "Client Id is invalid, please check and try again"),
+        "myFavouriteEvents":
+            MessageLookupByLibrary.simpleMessage("My Favourite events"),
         "navigateToDetailPage":
             MessageLookupByLibrary.simpleMessage("Navigate to Detail Page"),
         "networkErrorMessage": MessageLookupByLibrary.simpleMessage(
