@@ -22,15 +22,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "backToHome": MessageLookupByLibrary.simpleMessage("Back to Home"),
-        "detailPage": MessageLookupByLibrary.simpleMessage("Detail Page"),
-        "homePage": MessageLookupByLibrary.simpleMessage("Home Page"),
+        "detailPage": MessageLookupByLibrary.simpleMessage("Event Detail"),
+        "homePage": MessageLookupByLibrary.simpleMessage("Events"),
         "invalidClientIdError": MessageLookupByLibrary.simpleMessage(
             "Client Id is invalid, please check and try again"),
         "myFavouriteEvents":
             MessageLookupByLibrary.simpleMessage("My Favourite events"),
-        "navigateToDetailPage":
-            MessageLookupByLibrary.simpleMessage("Navigate to Detail Page"),
         "networkErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Make sure you are connected to an internet connection and please try again."),
         "networkRequestCanceled":
