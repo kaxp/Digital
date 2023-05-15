@@ -19,25 +19,31 @@ class _HomeApiClient implements HomeApiClient {
   String? baseUrl;
 
   @override
-  Future<HomeEventsResponse> getEventByEventId(eventId) async {
+  Future<EventsResponse> getEventsData({
+    required search,
+    required page,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'q': search,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<HomeEventsResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<EventsResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/events/${eventId}',
+              '/events',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = HomeEventsResponse.fromJson(_result.data!);
+    final value = EventsResponse.fromJson(_result.data!);
     return value;
   }
 

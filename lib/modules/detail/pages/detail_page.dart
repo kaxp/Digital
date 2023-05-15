@@ -7,7 +7,7 @@ import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_fonts.dart';
 import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
-import 'package:flutter_base_template_1/modules/search/models/events_response.dart';
+import 'package:flutter_base_template_1/modules/home/models/events_response.dart';
 import 'package:intl/intl.dart';
 
 class DetailPage extends StatelessWidget {

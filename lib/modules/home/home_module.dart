@@ -16,7 +16,7 @@ class HomeModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute(
           Modular.initialRoute,
-          child: (context, args) => HomePage(),
+          child: (context, args) => const HomePage(),
         ),
       ];
 }

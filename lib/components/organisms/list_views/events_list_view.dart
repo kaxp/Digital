@@ -3,7 +3,7 @@ import 'package:flutter_base_template_1/components/molecules/list_items/event_li
 import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
 import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/modules/detail/detail_module.dart';
-import 'package:flutter_base_template_1/modules/search/models/events_response.dart';
+import 'package:flutter_base_template_1/modules/home/models/events_response.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 
