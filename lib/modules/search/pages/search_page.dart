@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_base_template_1/components/atoms/typography/header2.dart';
 import 'package:flutter_base_template_1/components/molecules/app_bar/custom_appbar.dart';
 import 'package:flutter_base_template_1/components/molecules/loading_overlay/loading_overlay.dart';
 import 'package:flutter_base_template_1/components/molecules/search_input_box/custom_search_input_box.dart';
+import 'package:flutter_base_template_1/components/molecules/snackbar/custom_snackbar.dart';
 import 'package:flutter_base_template_1/components/organisms/list_views/events_list_view.dart';
 import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
@@ -53,10 +55,47 @@ class _SearchPageState extends State<SearchPage> {
       ),
       body: BlocConsumer<SearchBloc, SearchState>(
         bloc: _searchBloc,
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is SearchError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              CustomSnackbar(
+                message: state.errorMessage,
+                duration: const Duration(seconds: 5),
+              ),
+            );
+          }
+        },
         builder: (context, state) {
-          if (state is SearchEmpty || state is SearchInitial) {
-            return Container();
+          if (state is SearchInitial) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.sentiment_very_satisfied_outlined,
+                  ),
+                  Header2(
+                    textAlign: TextAlign.center,
+                    title: S.current.searchForEvents,
+                  ),
+                ],
+              ),
+            );
+          } else if (state is SearchEmpty) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.sentiment_very_dissatisfied_rounded,
+                  ),
+                  Header2(
+                    textAlign: TextAlign.center,
+                    title: S.current.noResultFound,
+                  ),
+                ],
+              ),
+            );
           }
 
           return LoadingOverlay(

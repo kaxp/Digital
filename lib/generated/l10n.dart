@@ -139,6 +139,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Search for the latest events, shows, concerts and much more!!!`
+  String get searchForEvents {
+    return Intl.message(
+      'Search for the latest events, shows, concerts and much more!!!',
+      name: 'searchForEvents',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sorry, no matching result found!\nPlease try searching with a different input.`
+  String get noResultFound {
+    return Intl.message(
+      'Sorry, no matching result found!\nPlease try searching with a different input.',
+      name: 'noResultFound',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

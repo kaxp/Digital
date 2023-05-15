@@ -32,8 +32,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Make sure you are connected to an internet connection and please try again."),
         "networkRequestCanceled":
             MessageLookupByLibrary.simpleMessage("Request cancelled"),
+        "noResultFound": MessageLookupByLibrary.simpleMessage(
+            "Sorry, no matching result found!\nPlease try searching with a different input."),
         "searchEvents":
             MessageLookupByLibrary.simpleMessage("Search events..."),
+        "searchForEvents": MessageLookupByLibrary.simpleMessage(
+            "Search for the latest events, shows, concerts and much more!!!"),
         "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
             "Something went wrong while connecting to the server. Please try again"),
         "unknownError":
