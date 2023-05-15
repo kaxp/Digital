@@ -50,41 +50,21 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Home Page`
+  /// `Events`
   String get homePage {
     return Intl.message(
-      'Home Page',
+      'Events',
       name: 'homePage',
       desc: '',
       args: [],
     );
   }
 
-  /// `Navigate to Detail Page`
-  String get navigateToDetailPage {
-    return Intl.message(
-      'Navigate to Detail Page',
-      name: 'navigateToDetailPage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Detail Page`
+  /// `Event Detail`
   String get detailPage {
     return Intl.message(
-      'Detail Page',
+      'Event Detail',
       name: 'detailPage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Back to Home`
-  String get backToHome {
-    return Intl.message(
-      'Back to Home',
-      name: 'backToHome',
       desc: '',
       args: [],
     );

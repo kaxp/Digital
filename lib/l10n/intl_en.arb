@@ -1,8 +1,6 @@
 {
-    "homePage": "Home Page",
-    "navigateToDetailPage": "Navigate to Detail Page",
-    "detailPage": "Detail Page",
-    "backToHome": "Back to Home",
+    "homePage": "Events",
+    "detailPage": "Event Detail",
     "somethingWentWrong": "Something went wrong while connecting to the server. Please try again",
     "networkErrorMessage": "Make sure you are connected to an internet connection and please try again.",
     "networkRequestCanceled": "Request cancelled",
