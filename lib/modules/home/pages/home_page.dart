@@ -6,6 +6,7 @@ import 'package:flutter_base_template_1/config/themes/assets/app_fonts.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_images.dart';
 import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
+import 'package:flutter_base_template_1/modules/detail/detail_module.dart';
 import 'package:flutter_base_template_1/modules/home/bloc/home_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -79,7 +80,14 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              const EventsListView(),
+              EventsListView(
+                isFavorite: true,
+                onTap: () {
+                  Modular.to.pushNamed(
+                    DetailRoute.moduleRoute,
+                  );
+                },
+              ),
             ],
           ),
         );
