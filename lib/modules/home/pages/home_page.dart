@@ -8,6 +8,7 @@ import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
 import 'package:flutter_base_template_1/modules/detail/detail_module.dart';
 import 'package:flutter_base_template_1/modules/home/bloc/home_bloc.dart';
+import 'package:flutter_base_template_1/modules/search/search_module.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -58,7 +59,11 @@ class _HomePageState extends State<HomePage> {
             ),
             actionWidgets: [
               IconButton(
-                onPressed: () => {},
+                onPressed: () {
+                  Modular.to.pushNamed(
+                    SearchRoute.moduleRoute,
+                  );
+                },
                 icon: const Icon(
                   Icons.search,
                 ),
