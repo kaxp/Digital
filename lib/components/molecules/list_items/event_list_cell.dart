@@ -49,37 +49,39 @@ class EventListCell extends StatelessWidget {
             ),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: kSpacingMedium),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Header2(
-                title: title ?? '',
-                fontFamily: AppFonts.ratBold,
-                maxLines: 1,
-                textOverflow: TextOverflow.ellipsis,
-                fontWeight: FontWeight.w500,
-              ),
-              const SizedBox(
-                height: kSpacingXxSmall,
-              ),
-              Header4(
-                title: city ?? '',
-                maxLines: 1,
-                textOverflow: TextOverflow.ellipsis,
-                color: AppColors.lightGreyColor,
-              ),
-              const SizedBox(
-                height: kSpacingXxSmall,
-              ),
-              Header4(
-                title: dateAndTime ?? '',
-                maxLines: 1,
-                textOverflow: TextOverflow.ellipsis,
-                color: AppColors.lightGreyColor,
-              ),
-            ],
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: kSpacingMedium),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Header2(
+                  title: title ?? '',
+                  fontFamily: AppFonts.ratBold,
+                  maxLines: 1,
+                  textOverflow: TextOverflow.ellipsis,
+                  fontWeight: FontWeight.w500,
+                ),
+                const SizedBox(
+                  height: kSpacingXxSmall,
+                ),
+                Header4(
+                  title: city ?? '',
+                  maxLines: 1,
+                  textOverflow: TextOverflow.ellipsis,
+                  color: AppColors.lightGreyColor,
+                ),
+                const SizedBox(
+                  height: kSpacingXxSmall,
+                ),
+                Header4(
+                  title: dateAndTime ?? '',
+                  maxLines: 1,
+                  textOverflow: TextOverflow.ellipsis,
+                  color: AppColors.lightGreyColor,
+                ),
+              ],
+            ),
           ),
         ),
       ],
