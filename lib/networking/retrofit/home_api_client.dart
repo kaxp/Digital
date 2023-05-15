@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_base_template_1/modules/home/models/home_events_response.dart';
+import 'package:flutter_base_template_1/modules/home/models/events_response.dart';
 import 'package:flutter_base_template_1/networking/constants/network_constants.dart';
 import 'package:flutter_base_template_1/networking/models/app_dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -9,7 +9,7 @@ part 'home_api_client.g.dart';
 
 @RestApi()
 abstract class HomeApiClient {
-  factory HomeApiClient.withAuthenticatedDio({String? baseUrl}) {
+  factory HomeApiClient.withDefaultDio({String? baseUrl}) {
     return HomeApiClient(
       Modular.get<AppDio>().noAuthDio,
       baseUrl: NetworkConstants.baseUrl,
@@ -23,10 +23,9 @@ abstract class HomeApiClient {
     );
   }
 
- @GET('/events/{eventId}')
-  Future<HomeEventsResponse> getEventByEventId(
-    @Path('eventId') int eventId,
-  );
+  @GET('/events')
+  Future<EventsResponse> getEventsData({
+    @Query('q') required String search,
+    @Query('page') required int page,
+  });
 }
-
-
