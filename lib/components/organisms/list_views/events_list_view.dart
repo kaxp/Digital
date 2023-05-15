@@ -11,17 +11,18 @@ class EventsListView extends StatelessWidget {
   const EventsListView({
     super.key,
     this.isFavorite = false,
-    this.eventData,
+    required this.events,
   });
 
   final bool isFavorite;
-  final EventsResponse? eventData;
+  final List<Event> events;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: eventData!.events.length,
+      itemCount: events.length,
       itemBuilder: (context, index) {
         final DateFormat formatter = DateFormat('yyyy-MM-dd – kk:mm');
 
@@ -43,10 +44,10 @@ class EventsListView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(kSpacingXSmall),
                     child: EventListCell(
-                      imageUrl: eventData!.events[index].performers[0].image,
-                      city: ' ${eventData!.events[index].venue.city} ${eventData!.events[index].venue.state}',
-                      title: eventData!.events[index].title,
-                      dateAndTime: formatter.format(eventData!.events[index].datetimeLocal),
+                      imageUrl: events[index].performers[0].image,
+                      city: ' ${events[index].venue.city} ${events[index].venue.state}',
+                      title: events[index].title,
+                      dateAndTime: formatter.format(events[index].datetimeLocal),
                     ),
                   ),
                   Visibility(
