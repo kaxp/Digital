@@ -14,7 +14,7 @@ class DetailModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute(
           Modular.initialRoute,
-          child: (context, args) => DetailPage(),
+          child: (context, args) => DetailPage(event: args.data),
         ),
       ];
 }

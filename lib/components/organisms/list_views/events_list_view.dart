@@ -30,6 +30,7 @@ class EventsListView extends StatelessWidget {
           onTap: () {
             Modular.to.pushNamed(
               DetailRoute.moduleRoute,
+              arguments: events[index],
             );
           },
           child: Padding(
@@ -45,9 +46,11 @@ class EventsListView extends StatelessWidget {
                     padding: const EdgeInsets.all(kSpacingXSmall),
                     child: EventListCell(
                       imageUrl: events[index].performers[0].image,
-                      city: ' ${events[index].venue.city} ${events[index].venue.state}',
+                      city: '${events[index].venue.city}, ${events[index].venue.state}',
                       title: events[index].title,
-                      dateAndTime: formatter.format(events[index].datetimeLocal),
+                      dateAndTime: formatter.format(
+                        events[index].datetimeLocal,
+                      ),
                     ),
                   ),
                   Visibility(
