@@ -7,9 +7,16 @@ import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_fonts.dart';
 import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
+import 'package:flutter_base_template_1/modules/search/models/events_response.dart';
+import 'package:intl/intl.dart';
 
 class DetailPage extends StatelessWidget {
+  const DetailPage({super.key, required this.event});
+
+  final Event event;
+
   Widget build(BuildContext context) {
+    final DateFormat formatter = DateFormat('yyyy-MM-dd – kk:mm');
     return Scaffold(
       appBar: CustomAppBar(
         titleWidget: Text(
@@ -33,33 +40,34 @@ class DetailPage extends StatelessWidget {
         padding: const EdgeInsets.all(kSpacingMedium),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Center(
               child: EventDetailBanner(
-                imageUrl:
-                    'https://seatgeek.com/images/performers-landscape/laugh-factory-las-vegas-8d0faf/794871/huge.jpg',
+                imageUrl: event.performers[0].image,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: kSpacingMedium,
             ),
             Header1(
-              title: 'This is movie title',
+              title: event.title,
               fontSize: 24,
               fontWeight: FontWeight.w500,
             ),
-            SizedBox(
+            const SizedBox(
               height: kSpacingXxSmall,
             ),
             Header3(
-              title: 'This is the date and time',
+              title: '${event.venue.city}, ${event.venue.state}',
               color: AppColors.lightGreyColor,
             ),
-            SizedBox(
+            const SizedBox(
               height: kSpacingXxSmall,
             ),
             Header3(
-              title: 'This is the city name',
+              title: formatter.format(
+                event.datetimeLocal,
+              ),
               color: AppColors.lightGreyColor,
             ),
           ],
