@@ -19,10 +19,15 @@ class _SearchApiClient implements SearchApiClient {
   String? baseUrl;
 
   @override
-  Future<EventsResponse> getEventsData(search) async {
+  Future<EventsResponse> getEventsData({
+    required search,
+    required page,
+  }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'q': search};
-    queryParameters.removeWhere((k, v) => v == null);
+    final queryParameters = <String, dynamic>{
+      r'q': search,
+      r'page': page,
+    };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio

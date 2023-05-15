@@ -24,7 +24,8 @@ abstract class SearchApiClient {
   }
 
   @GET('/events')
-  Future<EventsResponse> getEventsData(
-    @Query('q') String? search,
-  );
+  Future<EventsResponse> getEventsData({
+    @Query('q') required String search,
+    @Query('page') required int page,
+  });
 }
