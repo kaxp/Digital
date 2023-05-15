@@ -5,6 +5,7 @@ import 'package:flutter_base_template_1/components/molecules/app_bar/custom_appb
 import 'package:flutter_base_template_1/components/molecules/loading_overlay/loading_overlay.dart';
 import 'package:flutter_base_template_1/components/molecules/search_input_box/custom_search_input_box.dart';
 import 'package:flutter_base_template_1/components/organisms/list_views/events_list_view.dart';
+import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
 import 'package:flutter_base_template_1/modules/search/bloc/search_bloc.dart';
 import 'package:flutter_base_template_1/modules/search/models/events_response.dart';
@@ -22,16 +23,21 @@ class _SearchPageState extends State<SearchPage> {
   final _searchFocus = FocusNode();
   Timer? _timer;
   final _searchBloc = Modular.get<SearchBloc>();
+  String? searchQuery;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
     _searchFocus.requestFocus();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_onEventListScrolledListener);
   }
 
   @override
   void dispose() {
     _searchFocus.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -55,7 +61,19 @@ class _SearchPageState extends State<SearchPage> {
 
           return LoadingOverlay(
             isLoading: state is SearchLoading,
-            child: BuildSearchResultList(eventData: state.eventsData!),
+            child: ListView(
+              controller: _scrollController,
+              children: [
+                BuildSearchResultList(events: state.events),
+                if (state is SearchLoadingMore)
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(kSpacingMedium),
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+              ],
+            ),
           );
         },
       ),
@@ -63,6 +81,7 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _onQueryChanged(String query) {
+    searchQuery = query;
     _debounce(const Duration(milliseconds: 500), () {
       _searchBloc.fetchEvents(query);
     });
@@ -72,17 +91,26 @@ class _SearchPageState extends State<SearchPage> {
     if (_timer?.isActive ?? false) _timer!.cancel();
     _timer = Timer(duration, callback);
   }
+
+  void _onEventListScrolledListener() {
+    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+      _searchBloc.loadNextPage(searchQuery);
+    }
+  }
 }
 
 class BuildSearchResultList extends StatelessWidget {
-  const BuildSearchResultList({Key? key, required this.eventData}) : super(key: key);
+  const BuildSearchResultList({
+    Key? key,
+    required this.events,
+  }) : super(key: key);
 
-  final EventsResponse eventData;
+  final List<Event> events;
 
   @override
   Widget build(BuildContext context) {
     return EventsListView(
-      eventData: eventData,
+      events: events,
     );
   }
 }
