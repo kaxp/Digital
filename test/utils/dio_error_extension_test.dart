@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
 import 'package:flutter_base_template_1/utils/dio_error_extension.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'mock_dio_error.dart';
+import '../test_utils/mock_dio_error.dart';
 
 void main() async {
   final localeStrings = await S.load(const Locale.fromSubtags(languageCode: 'en')); // mimic localization delegate init

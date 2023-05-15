@@ -3,7 +3,7 @@ import 'package:flutter_base_template_1/networking/models/app_dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../utils/init_test_module_helper.dart';
+import '../test_utils/init_test_module_helper.dart';
 
 void main() {
   final expectedBaseParams = <String, dynamic>{
