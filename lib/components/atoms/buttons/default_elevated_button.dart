@@ -31,7 +31,7 @@ class DefaultElevatedButton extends StatelessWidget implements PreferredSizeWidg
         child: Header2(
           title: title,
           fontFamily: AppFonts.ratBold,
-          color: Colors.white,
+          color: AppColors.backgroundColor,
         ),
       ),
     );
