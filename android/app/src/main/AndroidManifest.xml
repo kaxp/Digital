@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.basetemplate1.flutter_base_template_1">
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="flutter_base_template_1"
+        android:label="Digital"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
