@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_base_template_1/config/flavor_config.dart';
+import 'package:flutter_base_template_1/managers/shared_preferences_manager.dart';
 import 'package:flutter_base_template_1/modules/app/base_app_module.dart';
 import 'package:flutter_base_template_1/modules/app/root_app.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -40,4 +41,6 @@ Future<void> _init({
 
   // init flavors specific values
   configInit();
+
+  await sharedPreferencesManager.init();
 }
