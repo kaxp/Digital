@@ -34,6 +34,11 @@ class HomeBloc extends Cubit<HomeState> {
       );
 
       if (response.events.isNotEmpty) {
+        // TODO(kaxp): Fetch this data from SharedPrefs.
+        for (var event in response.events) {
+          event.isFavourite = true;
+        }
+
         emit(
           HomeLoaded(
             events: response.events,
@@ -102,5 +107,20 @@ class HomeBloc extends Cubit<HomeState> {
         ),
       );
     }
+  }
+
+  void updateFavouriteEventStatus(int eventId) {
+    final event = state.events.firstWhere((element) => element.id == eventId);
+    event.isFavourite = !event.isFavourite;
+    emit(
+      HomeLoaded(
+        events: state.events,
+        searchQuery: state.searchQuery!,
+        hasReachedEnd: state.hasReachedEnd,
+        page: state.page,
+        totalPage: state.totalPage,
+        timeStamp: DateTime.now().millisecondsSinceEpoch,
+      ),
+    );
   }
 }
