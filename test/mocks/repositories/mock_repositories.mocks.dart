@@ -37,18 +37,14 @@ class _FakeEventsResponse_0 extends _i1.SmartFake
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeRepo extends _i1.Mock implements _i3.HomeRepo {
-  MockHomeRepo() {
-    _i1.throwOnMissingStub(this);
-  }
-
   @override
-  _i4.Future<_i2.EventsResponse> fetchEvents({
+  _i4.Future<_i2.EventsResponse> fetchEventsData({
     required String? searchString,
     required int? page,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
-          #fetchEvents,
+          #fetchEventsData,
           [],
           {
             #searchString: searchString,
@@ -58,7 +54,19 @@ class MockHomeRepo extends _i1.Mock implements _i3.HomeRepo {
         returnValue: _i4.Future<_i2.EventsResponse>.value(_FakeEventsResponse_0(
           this,
           Invocation.method(
-            #fetchEvents,
+            #fetchEventsData,
+            [],
+            {
+              #searchString: searchString,
+              #page: page,
+            },
+          ),
+        )),
+        returnValueForMissingStub:
+            _i4.Future<_i2.EventsResponse>.value(_FakeEventsResponse_0(
+          this,
+          Invocation.method(
+            #fetchEventsData,
             [],
             {
               #searchString: searchString,
