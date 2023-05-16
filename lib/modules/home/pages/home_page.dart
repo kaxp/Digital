@@ -26,7 +26,8 @@ class _HomePageState extends State<HomePage> {
   Timer? _timer;
   final _homeBloc = Modular.get<HomeBloc>();
   String? searchQuery;
-  late ScrollController _scrollController;
+  late final ScrollController _scrollController;
+  late final TextEditingController _searchInputController;
 
   @override
   void initState() {
@@ -34,12 +35,14 @@ class _HomePageState extends State<HomePage> {
     _searchFocus.requestFocus();
     _scrollController = ScrollController();
     _scrollController.addListener(_onEventListScrolledListener);
+    _searchInputController = TextEditingController();
   }
 
   @override
   void dispose() {
     _searchFocus.dispose();
     _scrollController.dispose();
+    _searchInputController.dispose();
     super.dispose();
   }
 
@@ -60,6 +63,8 @@ class _HomePageState extends State<HomePage> {
           hintText: S.current.searchEvents,
           onChanged: _onQueryChanged,
           focusNode: _searchFocus,
+          controller: _searchInputController,
+          showSuffixIcon: true,
         ),
       ),
       body: BlocConsumer<HomeBloc, HomeState>(
@@ -143,7 +148,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onEventListScrolledListener() {
-    if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+    if (_scrollController.position.pixels <= _scrollController.position.maxScrollExtent * 0.8) {
       _homeBloc.loadNextPage(searchQuery);
     }
   }
