@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_base_template_1/managers/shared_preferences_manager.dart';
 import 'package:flutter_base_template_1/modules/home/models/events_response.dart';
 import 'package:flutter_base_template_1/modules/home/repositories/home_repo.dart';
 import 'package:flutter_base_template_1/utils/dio_error_extension.dart';
@@ -11,6 +12,7 @@ part 'home_state.dart';
 class HomeBloc extends Cubit<HomeState> {
   HomeBloc() : super(HomeInitial());
   final _homeRepo = Modular.get<HomeRepo>();
+  final _sharedPrefs = Modular.get<SharedPreferencesManager>();
 
   Future<void> fetchEvents(String? searchString) async {
     if (searchString == null || searchString.length <= 2) {
@@ -34,10 +36,7 @@ class HomeBloc extends Cubit<HomeState> {
       );
 
       if (response.events.isNotEmpty) {
-        // TODO(kaxp): Fetch this data from SharedPrefs.
-        for (var event in response.events) {
-          event.isFavourite = true;
-        }
+        await _fetchSavedFavouriteEvents(response);
 
         emit(
           HomeLoaded(
@@ -85,6 +84,8 @@ class HomeBloc extends Cubit<HomeState> {
         page: state.page + 1,
       );
 
+      await _fetchSavedFavouriteEvents(response);
+
       emit(
         HomeLoaded(
             events: state.events + response.events,
@@ -122,5 +123,17 @@ class HomeBloc extends Cubit<HomeState> {
         timeStamp: DateTime.now().millisecondsSinceEpoch,
       ),
     );
+  }
+
+  Future<void> _fetchSavedFavouriteEvents(EventsResponse response) async {
+    final favEventsListInString = _sharedPrefs.getStringList(SharedPreferencesKeys.favouriteEvents) ?? <String>[];
+
+    final favEventsListInInt = favEventsListInString.map((i) => int.parse(i)).toList();
+
+    for (var event in response.events) {
+      if (favEventsListInInt.contains(event.id)) {
+        event.isFavourite = true;
+      }
+    }
   }
 }
