@@ -4,8 +4,8 @@ import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
 import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/modules/detail/detail_module.dart';
 import 'package:flutter_base_template_1/modules/home/models/events_response.dart';
+import 'package:flutter_base_template_1/utils/helpers.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:intl/intl.dart';
 
 class EventsListView extends StatelessWidget {
   const EventsListView({
@@ -24,8 +24,6 @@ class EventsListView extends StatelessWidget {
       shrinkWrap: true,
       itemCount: events.length,
       itemBuilder: (context, index) {
-        final DateFormat formatter = DateFormat('yyyy-MM-dd – kk:mm');
-
         return GestureDetector(
           onTap: () {
             Modular.to.pushNamed(
@@ -48,9 +46,7 @@ class EventsListView extends StatelessWidget {
                       imageUrl: events[index].performers[0].image,
                       city: '${events[index].venue.city}, ${events[index].venue.state}',
                       title: events[index].title,
-                      dateAndTime: formatter.format(
-                        events[index].datetimeLocal,
-                      ),
+                      dateAndTime: DateFormatter.formattedFullDateAndTimeWithComma(events[index].datetimeLocal),
                     ),
                   ),
                   Visibility(
