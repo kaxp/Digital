@@ -10,11 +10,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 class EventsListView extends StatelessWidget {
   const EventsListView({
     super.key,
-    this.isFavorite = false,
     required this.events,
   });
 
-  final bool isFavorite;
   final List<Event> events;
 
   @override
@@ -50,7 +48,7 @@ class EventsListView extends StatelessWidget {
                     ),
                   ),
                   Visibility(
-                    visible: isFavorite,
+                    visible: events[index].isFavourite,
                     child: const Positioned(
                       top: 2,
                       left: 0,
