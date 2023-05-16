@@ -3,11 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:bloc/bloc.dart' as _i4;
+import 'package:bloc/bloc.dart' as _i5;
+import 'package:flutter_base_template_1/modules/detail/bloc/detail_bloc.dart'
+    as _i3;
 import 'package:flutter_base_template_1/modules/home/bloc/home_bloc.dart'
     as _i2;
+import 'package:flutter_base_template_1/modules/home/models/events_response.dart'
+    as _i6;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -23,6 +27,16 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeHomeState_0 extends _i1.SmartFake implements _i2.HomeState {
   _FakeHomeState_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeDetailState_1 extends _i1.SmartFake implements _i3.DetailState {
+  _FakeDetailState_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -48,33 +62,33 @@ class MockHomeBloc extends _i1.Mock implements _i2.HomeBloc {
         ),
       ) as _i2.HomeState);
   @override
-  _i3.Stream<_i2.HomeState> get stream => (super.noSuchMethod(
+  _i4.Stream<_i2.HomeState> get stream => (super.noSuchMethod(
         Invocation.getter(#stream),
-        returnValue: _i3.Stream<_i2.HomeState>.empty(),
-      ) as _i3.Stream<_i2.HomeState>);
+        returnValue: _i4.Stream<_i2.HomeState>.empty(),
+      ) as _i4.Stream<_i2.HomeState>);
   @override
   bool get isClosed => (super.noSuchMethod(
         Invocation.getter(#isClosed),
         returnValue: false,
       ) as bool);
   @override
-  _i3.Future<void> fetchEvents(String? searchString) => (super.noSuchMethod(
+  _i4.Future<void> fetchEvents(String? searchString) => (super.noSuchMethod(
         Invocation.method(
           #fetchEvents,
           [searchString],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
   @override
-  _i3.Future<void> loadNextPage(String? searchString) => (super.noSuchMethod(
+  _i4.Future<void> loadNextPage(String? searchString) => (super.noSuchMethod(
         Invocation.method(
           #loadNextPage,
           [searchString],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
   @override
   void updateFavouriteEventStatus(int? eventId) => super.noSuchMethod(
         Invocation.method(
@@ -92,7 +106,7 @@ class MockHomeBloc extends _i1.Mock implements _i2.HomeBloc {
         returnValueForMissingStub: null,
       );
   @override
-  void onChange(_i4.Change<_i2.HomeState>? change) => super.noSuchMethod(
+  void onChange(_i5.Change<_i2.HomeState>? change) => super.noSuchMethod(
         Invocation.method(
           #onChange,
           [change],
@@ -130,12 +144,111 @@ class MockHomeBloc extends _i1.Mock implements _i2.HomeBloc {
         returnValueForMissingStub: null,
       );
   @override
-  _i3.Future<void> close() => (super.noSuchMethod(
+  _i4.Future<void> close() => (super.noSuchMethod(
         Invocation.method(
           #close,
           [],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+}
+
+/// A class which mocks [DetailBloc].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockDetailBloc extends _i1.Mock implements _i3.DetailBloc {
+  MockDetailBloc() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.DetailState get state => (super.noSuchMethod(
+        Invocation.getter(#state),
+        returnValue: _FakeDetailState_1(
+          this,
+          Invocation.getter(#state),
+        ),
+      ) as _i3.DetailState);
+  @override
+  _i4.Stream<_i3.DetailState> get stream => (super.noSuchMethod(
+        Invocation.getter(#stream),
+        returnValue: _i4.Stream<_i3.DetailState>.empty(),
+      ) as _i4.Stream<_i3.DetailState>);
+  @override
+  bool get isClosed => (super.noSuchMethod(
+        Invocation.getter(#isClosed),
+        returnValue: false,
+      ) as bool);
+  @override
+  void setInitialPageState(_i6.Event? event) => super.noSuchMethod(
+        Invocation.method(
+          #setInitialPageState,
+          [event],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void onFavouriteTap(_i6.Event? event) => super.noSuchMethod(
+        Invocation.method(
+          #onFavouriteTap,
+          [event],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void emit(_i3.DetailState? state) => super.noSuchMethod(
+        Invocation.method(
+          #emit,
+          [state],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void onChange(_i5.Change<_i3.DetailState>? change) => super.noSuchMethod(
+        Invocation.method(
+          #onChange,
+          [change],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void addError(
+    Object? error, [
+    StackTrace? stackTrace,
+  ]) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #addError,
+          [
+            error,
+            stackTrace,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void onError(
+    Object? error,
+    StackTrace? stackTrace,
+  ) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #onError,
+          [
+            error,
+            stackTrace,
+          ],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i4.Future<void> close() => (super.noSuchMethod(
+        Invocation.method(
+          #close,
+          [],
+        ),
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
 }

@@ -22,12 +22,13 @@ class DetailBloc extends Cubit<DetailState> {
   }
 
   void onFavouriteTap(Event event) async {
-    await _saveFavouriteEvents(event);
     _homeBloc.updateFavouriteEventStatus(event.id);
 
     if (state is DetailUnFavourite) {
+      await _saveFavouriteEvents(event);
       emit(DetailFavourite());
     } else {
+      await _removeFavouriteEvents(event);
       emit(DetailUnFavourite());
     }
   }
@@ -37,5 +38,14 @@ class DetailBloc extends Cubit<DetailState> {
     favouriteEvents.add(event.id.toString());
 
     await _sharedPrefs.setStringList(SharedPreferencesKeys.favouriteEvents, favouriteEvents);
+  }
+
+  Future<void> _removeFavouriteEvents(Event event) async {
+    final favouriteEvents = _sharedPrefs.getStringList(SharedPreferencesKeys.favouriteEvents) ?? <String>[];
+    
+    if (favouriteEvents.isNotEmpty) {
+      favouriteEvents.remove(event.id.toString());
+      await _sharedPrefs.setStringList(SharedPreferencesKeys.favouriteEvents, favouriteEvents);
+    }
   }
 }
