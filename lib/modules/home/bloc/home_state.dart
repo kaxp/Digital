@@ -6,7 +6,7 @@ abstract class HomeState extends Equatable {
     this.searchQuery,
     this.page = 1,
     this.hasReachedEnd = true,
-    this.totalPage = 10,
+    this.totalPage = 1,
   });
 
   final List<Event> events;
@@ -61,7 +61,18 @@ class HomeLoaded extends HomeState {
 class HomeError extends HomeState {
   const HomeError({
     required this.errorMessage,
-  });
+    required List<Event> events,
+    required String searchQuery,
+    required int page,
+    required bool hasReachedEnd,
+    required int totalPage,
+  }) : super(
+          events: events,
+          searchQuery: searchQuery,
+          hasReachedEnd: hasReachedEnd,
+          page: page,
+          totalPage: totalPage,
+        );
 
   final String errorMessage;
 
