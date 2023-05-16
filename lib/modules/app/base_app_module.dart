@@ -1,3 +1,4 @@
+import 'package:flutter_base_template_1/managers/shared_preferences_manager.dart';
 import 'package:flutter_base_template_1/modules/detail/detail_module.dart';
 import 'package:flutter_base_template_1/modules/home/home_module.dart';
 import 'package:flutter_base_template_1/networking/constants/network_constants.dart';
@@ -15,6 +16,9 @@ class BaseAppModule extends Module {
             ),
           ),
         ),
+        Bind.lazySingleton<SharedPreferencesManager>((i) {
+          return SharedPreferencesManager();
+        })
       ];
 
   @override
