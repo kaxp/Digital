@@ -30,7 +30,7 @@ class HomeBloc extends Cubit<HomeState> {
 
     try {
       emit(HomeLoading());
-      final response = await _homeRepo.fetchEvents(
+      final response = await _homeRepo.fetchEventsData(
         searchString: searchString,
         page: state.page,
       );
@@ -79,7 +79,7 @@ class HomeBloc extends Cubit<HomeState> {
         totalPage: state.totalPage,
       ));
 
-      final response = await _homeRepo.fetchEvents(
+      final response = await _homeRepo.fetchEventsData(
         searchString: searchString!,
         page: state.page + 1,
       );

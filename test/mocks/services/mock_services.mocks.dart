@@ -3,10 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
+import 'dart:ui' as _i6;
 
+import 'package:flutter/material.dart' as _i5;
 import 'package:flutter_base_template_1/managers/shared_preferences_manager.dart'
+    as _i7;
+import 'package:flutter_modular/src/presenter/models/modular_navigator.dart'
     as _i2;
+import 'package:flutter_modular/src/presenter/models/route.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -20,13 +25,199 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+/// A class which mocks [IModularNavigator].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIModularNavigator extends _i1.Mock implements _i2.IModularNavigator {
+  MockIModularNavigator() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  String get path => (super.noSuchMethod(
+        Invocation.getter(#path),
+        returnValue: '',
+      ) as String);
+  @override
+  List<_i3.ParallelRoute<dynamic>> get navigateHistory => (super.noSuchMethod(
+        Invocation.getter(#navigateHistory),
+        returnValue: <_i3.ParallelRoute<dynamic>>[],
+      ) as List<_i3.ParallelRoute<dynamic>>);
+  @override
+  _i4.Future<T?> push<T extends Object?>(_i5.Route<T>? route) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #push,
+          [route],
+        ),
+        returnValue: _i4.Future<T?>.value(),
+      ) as _i4.Future<T?>);
+  @override
+  _i4.Future<T?> popAndPushNamed<T extends Object?, TO extends Object?>(
+    String? routeName, {
+    TO? result,
+    Object? arguments,
+    bool? forRoot = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #popAndPushNamed,
+          [routeName],
+          {
+            #result: result,
+            #arguments: arguments,
+            #forRoot: forRoot,
+          },
+        ),
+        returnValue: _i4.Future<T?>.value(),
+      ) as _i4.Future<T?>);
+  @override
+  _i4.Future<T?> pushNamed<T extends Object?>(
+    String? routeName, {
+    Object? arguments,
+    bool? forRoot = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #pushNamed,
+          [routeName],
+          {
+            #arguments: arguments,
+            #forRoot: forRoot,
+          },
+        ),
+        returnValue: _i4.Future<T?>.value(),
+      ) as _i4.Future<T?>);
+  @override
+  _i4.Future<T?> pushNamedAndRemoveUntil<T extends Object?>(
+    String? newRouteName,
+    bool Function(_i5.Route<dynamic>)? predicate, {
+    Object? arguments,
+    bool? forRoot = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #pushNamedAndRemoveUntil,
+          [
+            newRouteName,
+            predicate,
+          ],
+          {
+            #arguments: arguments,
+            #forRoot: forRoot,
+          },
+        ),
+        returnValue: _i4.Future<T?>.value(),
+      ) as _i4.Future<T?>);
+  @override
+  _i4.Future<T?> pushReplacementNamed<T extends Object?, TO extends Object?>(
+    String? routeName, {
+    TO? result,
+    Object? arguments,
+    bool? forRoot = false,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #pushReplacementNamed,
+          [routeName],
+          {
+            #result: result,
+            #arguments: arguments,
+            #forRoot: forRoot,
+          },
+        ),
+        returnValue: _i4.Future<T?>.value(),
+      ) as _i4.Future<T?>);
+  @override
+  void pop<T extends Object?>([T? result]) => super.noSuchMethod(
+        Invocation.method(
+          #pop,
+          [result],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool canPop() => (super.noSuchMethod(
+        Invocation.method(
+          #canPop,
+          [],
+        ),
+        returnValue: false,
+      ) as bool);
+  @override
+  _i4.Future<bool> maybePop<T extends Object?>([T? result]) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #maybePop,
+          [result],
+        ),
+        returnValue: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
+  @override
+  void popUntil(bool Function(_i5.Route<dynamic>)? predicate) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #popUntil,
+          [predicate],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void navigate(
+    String? path, {
+    dynamic arguments,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #navigate,
+          [path],
+          {#arguments: arguments},
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setObservers(List<_i5.NavigatorObserver>? navigatorObservers) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #setObservers,
+          [navigatorObservers],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void setNavigatorKey(_i5.GlobalKey<_i5.NavigatorState>? navigatorkey) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #setNavigatorKey,
+          [navigatorkey],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void addListener(_i6.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void removeListener(_i6.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
 /// A class which mocks [SharedPreferencesManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSharedPreferencesManager extends _i1.Mock
-    implements _i2.SharedPreferencesManager {
+    implements _i7.SharedPreferencesManager {
   @override
-  _i3.Future<bool> setStringList(
+  _i4.Future<bool> setStringList(
     String? key,
     List<String>? value,
   ) =>
@@ -38,9 +229,9 @@ class MockSharedPreferencesManager extends _i1.Mock
             value,
           ],
         ),
-        returnValue: _i3.Future<bool>.value(false),
-        returnValueForMissingStub: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
   @override
   List<String>? getStringList(String? key) => (super.noSuchMethod(
         Invocation.method(
@@ -50,12 +241,12 @@ class MockSharedPreferencesManager extends _i1.Mock
         returnValueForMissingStub: null,
       ) as List<String>?);
   @override
-  _i3.Future<bool> clearData(String? key) => (super.noSuchMethod(
+  _i4.Future<bool> clearData(String? key) => (super.noSuchMethod(
         Invocation.method(
           #clearData,
           [key],
         ),
-        returnValue: _i3.Future<bool>.value(false),
-        returnValueForMissingStub: _i3.Future<bool>.value(false),
-      ) as _i3.Future<bool>);
+        returnValue: _i4.Future<bool>.value(false),
+        returnValueForMissingStub: _i4.Future<bool>.value(false),
+      ) as _i4.Future<bool>);
 }
