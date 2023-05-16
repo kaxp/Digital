@@ -3,7 +3,7 @@ part of 'home_bloc.dart';
 abstract class HomeState extends Equatable {
   const HomeState({
     this.events = const [],
-    this.searchQuery,
+    this.searchQuery = '',
     this.page = 1,
     this.hasReachedEnd = true,
     this.totalPage = 1,
