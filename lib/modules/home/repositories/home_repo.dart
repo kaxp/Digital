@@ -4,7 +4,7 @@ import 'package:flutter_base_template_1/networking/retrofit/home_api_client.dart
 class HomeRepo {
   final HomeApiClient _homeApiClient = HomeApiClient.withDefaultDio();
 
-  Future<EventsResponse> fetchEvents({
+  Future<EventsResponse> fetchEventsData({
     required String searchString,
     required int page,
   }) async {
