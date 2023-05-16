@@ -8,6 +8,6 @@ abstract class DetailState extends Equatable {
 
 class DetailInitial extends DetailState {}
 
-class DetailLoading extends DetailState {}
+class DetailUnFavourite extends DetailState {}
 
-class DetailLoaded extends DetailState {}
+class DetailFavourite extends DetailState {}

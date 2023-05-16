@@ -7,6 +7,7 @@ abstract class HomeState extends Equatable {
     this.page = 1,
     this.hasReachedEnd = true,
     this.totalPage = 1,
+    this.timeStamp
   });
 
   final List<Event> events;
@@ -14,9 +15,10 @@ abstract class HomeState extends Equatable {
   final int page;
   final bool hasReachedEnd;
   final int totalPage;
+  final int? timeStamp;
 
   @override
-  List<Object?> get props => [events, searchQuery, page, hasReachedEnd, totalPage];
+  List<Object?> get props => [events, searchQuery, page, hasReachedEnd, totalPage, timeStamp,];
 }
 
 class HomeInitial extends HomeState {}
@@ -49,12 +51,14 @@ class HomeLoaded extends HomeState {
     required int page,
     required bool hasReachedEnd,
     required int totalPage,
+    int? timeStamp,
   }) : super(
           events: events,
           searchQuery: searchQuery,
           hasReachedEnd: hasReachedEnd,
           page: page,
           totalPage: totalPage,
+          timeStamp: timeStamp,
         );
 }
 

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -23,12 +25,13 @@ class EventsResponse extends Equatable {
 
 @JsonSerializable()
 class Event extends Equatable {
-  const Event({
+   Event({
     required this.id,
     required this.performers,
     required this.datetimeLocal,
     required this.title,
     required this.venue,
+    this.isFavourite = false,
   });
 
   final int id;
@@ -37,6 +40,7 @@ class Event extends Equatable {
   final DateTime datetimeLocal;
   final String title;
   final Venue venue;
+  bool isFavourite;
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
 
