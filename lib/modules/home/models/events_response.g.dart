@@ -28,6 +28,7 @@ Event _$EventFromJson(Map<String, dynamic> json) => Event(
       datetimeLocal: DateTime.parse(json['datetime_local'] as String),
       title: json['title'] as String,
       venue: Venue.fromJson(json['venue'] as Map<String, dynamic>),
+      isFavourite: json['isFavourite'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
@@ -36,6 +37,7 @@ Map<String, dynamic> _$EventToJson(Event instance) => <String, dynamic>{
       'datetime_local': instance.datetimeLocal.toIso8601String(),
       'title': instance.title,
       'venue': instance.venue,
+      'isFavourite': instance.isFavourite,
     };
 
 Performer _$PerformerFromJson(Map<String, dynamic> json) => Performer(
