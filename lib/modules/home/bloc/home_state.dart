@@ -6,17 +6,17 @@ abstract class HomeState extends Equatable {
     this.searchQuery,
     this.page = 1,
     this.hasReachedEnd = true,
-    this.totalResultCount = 10,
+    this.totalPage = 10,
   });
 
   final List<Event> events;
   final String? searchQuery;
   final int page;
   final bool hasReachedEnd;
-  final int totalResultCount;
+  final int totalPage;
 
   @override
-  List<Object?> get props => [events, searchQuery, page, hasReachedEnd, totalResultCount];
+  List<Object?> get props => [events, searchQuery, page, hasReachedEnd, totalPage];
 }
 
 class HomeInitial extends HomeState {}
@@ -32,13 +32,13 @@ class HomeLoadingMore extends HomeState {
     required String searchQuery,
     required int page,
     required bool hasReachedEnd,
-    required int totalResultCount,
+    required int totalPage,
   }) : super(
           events: events,
           searchQuery: searchQuery,
           hasReachedEnd: hasReachedEnd,
           page: page,
-          totalResultCount: totalResultCount,
+          totalPage: totalPage,
         );
 }
 
@@ -48,13 +48,13 @@ class HomeLoaded extends HomeState {
     required String searchQuery,
     required int page,
     required bool hasReachedEnd,
-    required int totalResultCount,
+    required int totalPage,
   }) : super(
           events: events,
           searchQuery: searchQuery,
           hasReachedEnd: hasReachedEnd,
           page: page,
-          totalResultCount: totalResultCount,
+          totalPage: totalPage,
         );
 }
 

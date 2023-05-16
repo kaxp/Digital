@@ -20,7 +20,7 @@ class HomeBloc extends Cubit<HomeState> {
           searchQuery: state.searchQuery!,
           hasReachedEnd: state.hasReachedEnd,
           page: state.page,
-          totalResultCount: state.totalResultCount,
+          totalPage: state.totalPage,
         ),
       );
       return;
@@ -41,7 +41,7 @@ class HomeBloc extends Cubit<HomeState> {
             page: response.meta.page,
             hasReachedEnd: response.meta.total - 10 <=
                 0, // when (total_result_count - 10 <= 0) == true, means we are at last page.
-            totalResultCount: response.meta.total,
+            totalPage: response.meta.total,
           ),
         );
       } else {
@@ -63,7 +63,7 @@ class HomeBloc extends Cubit<HomeState> {
         searchQuery: state.searchQuery!,
         hasReachedEnd: state.hasReachedEnd,
         page: state.page,
-        totalResultCount: state.totalResultCount,
+        totalPage: state.totalPage,
       ));
 
       final response = await _homeRepo.fetchEvents(
@@ -78,8 +78,8 @@ class HomeBloc extends Cubit<HomeState> {
             page: response.meta.page,
             hasReachedEnd:
                 response.meta.total - 10 <= 0, // when (total_result - 10 <= 0) == true, means we are at last page.
-            totalResultCount:
-                state.totalResultCount - 10 // Reduce the total result count by 10 with each pagination API call.
+            totalPage:
+                state.totalPage - 10 // Reduce the total result count by 10 with each pagination API call.
             ),
       );
     } on DioError catch (error) {

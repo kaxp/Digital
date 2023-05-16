@@ -9,6 +9,8 @@
     "myFavouriteEvents" : "My Favourite events",
     "searchEvents" : "Search events...",
     "searchForEvents" : "Search for the latest events, shows, concerts and much more!!!",
-    "noResultFound" : "Sorry, no matching result found!\nPlease try searching with a different input."
+    "noResultFound" : "Sorry, no matching result found!\nPlease try searching with a different input.",
+    "bookNow" : "Book Now",
+    "comingSoon" : "Coming Soon"
 }
   

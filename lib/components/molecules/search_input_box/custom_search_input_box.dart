@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
 
-class CustomSearchInputBox extends StatelessWidget {
+class CustomSearchInputBox extends StatefulWidget {
   const CustomSearchInputBox({
     super.key,
     this.textInputType = TextInputType.text,
@@ -39,26 +39,66 @@ class CustomSearchInputBox extends StatelessWidget {
   final FocusNode? focusNode;
 
   @override
+  State<CustomSearchInputBox> createState() => _CustomSearchInputBoxState();
+}
+
+class _CustomSearchInputBoxState extends State<CustomSearchInputBox> {
+  @override
+  void initState() {
+    super.initState();
+    // add listener when suffic icon needs to be displayed
+    widget.showSuffixIcon
+        ? widget.controller!.addListener(() {
+            setState(() {});
+          })
+        : null;
+  }
+
+  @override
+  void dispose() {
+    widget.showSuffixIcon ? widget.controller!.removeListener(() {}) : null;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
-      inputFormatters: inputFormatters,
-      keyboardType: textInputType,
+      controller: widget.controller,
+      inputFormatters: widget.inputFormatters,
+      keyboardType: widget.textInputType,
       autofocus: true,
       style: const TextStyle(color: AppColors.backgroundColor),
       cursorColor: AppColors.backgroundColor,
-      decoration:  InputDecoration(
+      decoration: InputDecoration(
         hintText: S.current.searchEvents,
         hintStyle: const TextStyle(color: AppColors.offWhiteColor),
         border: InputBorder.none,
+        suffixIcon: widget.controller!.text.length > 0
+            ? Container(
+                transform: Matrix4.translationValues(0, -2, 0),
+                child: IconButton(
+                  onPressed: () {
+                    widget.controller!.clear();
+                  },
+                  icon: const Icon(
+                    Icons.cancel_outlined,
+                    size: 20,
+                  ),
+                ),
+              )
+            : null,
+        suffixIconColor: AppColors.backgroundColor,
       ),
-      onChanged: debounceDuration != null ? _onChangeWithDebounce : onChanged,
-      focusNode: focusNode,
+      onChanged: widget.debounceDuration != null ? _onChangeWithDebounce : widget.onChanged,
+      focusNode: widget.focusNode,
       enabled: true,
+      onTapOutside: (_) {
+        widget.focusNode!.unfocus();
+      },
     );
   }
 
   void _onChangeWithDebounce(String value) {
-    EasyDebounce.debounce('search', debounceDuration!, () => onChanged?.call(value));
+    EasyDebounce.debounce('search', widget.debounceDuration!, () => widget.onChanged?.call(value));
   }
 }

@@ -32,7 +32,7 @@ class EventListCell extends StatelessWidget {
             Radius.circular(kRadiusXSmall),
           ),
           child: Container(
-            color: Colors.black,
+            color: AppColors.blackColor,
             child: CachedNetworkImage(
               height: 54,
               width: 54,

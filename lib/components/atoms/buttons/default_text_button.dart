@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_fonts.dart';
 
 class DefaultTextButton extends StatelessWidget implements PreferredSizeWidget {
@@ -14,13 +15,13 @@ class DefaultTextButton extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.transparentColor,
       ),
       onPressed: onPressed,
       child: Text(
         title,
         style: const TextStyle(
-          color: Colors.white,
+          color: AppColors.backgroundColor,
           fontFamily: AppFonts.ratBold,
           fontSize: 11,
         ),
