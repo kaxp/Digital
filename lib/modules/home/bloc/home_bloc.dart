@@ -14,17 +14,46 @@ class HomeBloc extends Cubit<HomeState> {
   final _homeRepo = Modular.get<HomeRepo>();
   final _sharedPrefs = Modular.get<SharedPreferencesManager>();
 
+  // HomeState getters
+  HomeState get _loadedStateWithExistingAvailableData => HomeLoaded(
+        events: state.events,
+        searchQuery: state.searchQuery!,
+        hasReachedEnd: state.hasReachedEnd,
+        page: state.page,
+        totalPage: state.totalPage,
+        timeStamp: DateTime.now().millisecondsSinceEpoch,
+      ); 
+
+  HomeState get _loadingMoreStateWithExistingAvailableData => HomeLoadingMore(
+        events: state.events,
+        searchQuery: state.searchQuery!,
+        hasReachedEnd: state.hasReachedEnd,
+        page: state.page,
+        totalPage: state.totalPage,
+      );
+
+  void _emitErrorStateWithExistingAvailableData({
+    required String errorMessage,
+    required String? searchQuery,
+  }) {
+    emit(
+      HomeError(
+        errorMessage: errorMessage,
+        events: state.events,
+        hasReachedEnd: state.hasReachedEnd,
+        page: state.page,
+        totalPage: state.totalPage,
+        searchQuery: searchQuery!,
+      ),
+    );
+  }
+
+  /// [fetchEvents] method is used for fetching the event data
+  /// on user search.
   Future<void> fetchEvents(String? searchString) async {
     if (searchString == null || searchString.length <= 2) {
-      emit(
-        HomeLoaded(
-          events: state.events,
-          searchQuery: state.searchQuery!,
-          hasReachedEnd: state.hasReachedEnd,
-          page: state.page,
-          totalPage: state.totalPage,
-        ),
-      );
+      emit(_loadedStateWithExistingAvailableData);
+
       return;
     }
 
@@ -36,7 +65,7 @@ class HomeBloc extends Cubit<HomeState> {
       );
 
       if (response.events.isNotEmpty) {
-        await _fetchSavedFavouriteEvents(response);
+        await _fetchSavedFavouriteEventsFromPrefs(response);
 
         emit(
           HomeLoaded(
@@ -52,80 +81,62 @@ class HomeBloc extends Cubit<HomeState> {
         emit(HomeEmpty());
       }
     } on DioError catch (error) {
-      emit(
-        HomeError(
-          errorMessage: error.errorMessage(),
-          events: state.events,
-          hasReachedEnd: state.hasReachedEnd,
-          page: state.page,
-          totalPage: state.totalPage,
-          searchQuery: searchString,
-        ),
+      _emitErrorStateWithExistingAvailableData(
+        errorMessage: error.errorMessage(),
+        searchQuery: searchString,
       );
     }
   }
 
+  /// [loadNextPage] method is used for fetching the next available
+  /// pagination data when user scroll to the bottom of screen.
   Future<void> loadNextPage(String? searchString) async {
     if (state.hasReachedEnd || state is! HomeLoaded || state is HomeLoadingMore) {
       return;
     }
 
     try {
-      emit(HomeLoadingMore(
-        events: state.events,
-        searchQuery: state.searchQuery!,
-        hasReachedEnd: state.hasReachedEnd,
-        page: state.page,
-        totalPage: state.totalPage,
-      ));
+      emit(_loadingMoreStateWithExistingAvailableData);
 
       final response = await _homeRepo.fetchEventsData(
         searchString: searchString!,
         page: state.page + 1,
       );
-
-      await _fetchSavedFavouriteEvents(response);
+      await _fetchSavedFavouriteEventsFromPrefs(response);
 
       emit(
         HomeLoaded(
-            events: state.events + response.events,
-            searchQuery: searchString,
-            page: response.meta.page,
-            hasReachedEnd:
-                response.meta.total - 10 <= 0, // when (total_result - 10 <= 0) == true, means we are at last page.
-            totalPage: state.totalPage - 10 // Reduce the total result count by 10 with each pagination API call.
-            ),
+          events: state.events + response.events,
+          searchQuery: searchString,
+          page: response.meta.page,
+          hasReachedEnd:
+              response.meta.total - 10 <= 0, // when (total_result - 10 <= 0) == true, means we are at last page.
+          totalPage: state.totalPage - 10, // Reduce the total result count by 10 with each pagination API call.
+        ),
       );
     } on DioError catch (error) {
-      emit(
-        HomeError(
-          errorMessage: error.errorMessage(),
-          events: state.events,
-          hasReachedEnd: state.hasReachedEnd,
-          page: state.page,
-          totalPage: state.totalPage,
-          searchQuery: searchString!,
-        ),
+      _emitErrorStateWithExistingAvailableData(
+        errorMessage: error.errorMessage(),
+        searchQuery: searchString,
       );
     }
   }
 
-  void updateFavouriteEventStatus(int eventId) {
+  /// A helper method that is used to updating the status
+  /// of event i.e favourite <=> unfavourite.
+  void updateEventStatus(int eventId) {
     final event = state.events.firstWhere((element) => element.id == eventId);
     event.isFavourite = !event.isFavourite;
-    emit(
-      HomeLoaded(
-        events: state.events,
-        searchQuery: state.searchQuery!,
-        hasReachedEnd: state.hasReachedEnd,
-        page: state.page,
-        totalPage: state.totalPage,
-        timeStamp: DateTime.now().millisecondsSinceEpoch,
-      ),
-    );
+    emit(_loadedStateWithExistingAvailableData);
   }
 
-  Future<void> _fetchSavedFavouriteEvents(EventsResponse response) async {
+  /// A helper method that is used for fetching the locally saved favourite
+  /// events Ids in Shared Preferences.
+  ///
+  /// After fetching the saved favourite event id's, this method will check for
+  /// the availablity of these id's in API response and will update the status of
+  /// [isFavourite] key to true when matching ids are found in response.
+  Future<void> _fetchSavedFavouriteEventsFromPrefs(EventsResponse response) async {
     final favEventsListInString = _sharedPrefs.getStringList(SharedPreferencesKeys.favouriteEvents) ?? <String>[];
 
     final favEventsListInInt = favEventsListInString.map((i) => int.parse(i)).toList();

@@ -6,10 +6,10 @@ import 'package:flutter_base_template_1/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+/// [RootApp] is the root widget of application
 class RootApp extends StatelessWidget {
-  const RootApp();
+  const RootApp({super.key});
 
-  // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -18,7 +18,7 @@ class RootApp extends StatelessWidget {
     ]);
 
     return MaterialApp.router(
-      title: 'Flutter template',
+      title: 'Digital',
       theme: AppTheme.defaultTheme,
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
 
 class LoadingOverlay extends StatelessWidget {
   final Widget? child;
@@ -14,7 +15,9 @@ class LoadingOverlay extends StatelessWidget {
   Widget build(BuildContext context) {
     if (isLoading!) {
       return const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(AppColors.secondaryColor),
+        ),
       );
     }
     return child!;

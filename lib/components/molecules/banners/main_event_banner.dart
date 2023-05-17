@@ -4,8 +4,8 @@ import 'package:flutter_base_template_1/config/themes/assets/app_images.dart';
 import 'package:flutter_base_template_1/constants/radius_constants.dart';
 import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 
-class EventDetailBanner extends StatelessWidget {
-  const EventDetailBanner({
+class MainEventBanner extends StatelessWidget {
+  const MainEventBanner({
     super.key,
     required this.imageUrl,
   });

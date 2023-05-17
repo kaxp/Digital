@@ -3,8 +3,8 @@ import 'package:equatable/equatable.dart';
 
 
 /// [AppDio] class is used for defining the various dio
-/// client types we can have in our app. For e.g. [noAuthDio]
-/// when we need to call APIs that does not require user
+/// client types we can have in our app. For e.g. 
+/// [noAuthDio] when we need to call APIs that does not require user
 /// authentication or [authDio] when authentication is 
 /// required.
 class AppDio extends Equatable {

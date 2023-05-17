@@ -92,9 +92,9 @@ class MockHomeBloc extends _i1.Mock implements _i2.HomeBloc {
         returnValueForMissingStub: _i4.Future<void>.value(),
       ) as _i4.Future<void>);
   @override
-  void updateFavouriteEventStatus(int? eventId) => super.noSuchMethod(
+  void updateEventStatus(int? eventId) => super.noSuchMethod(
         Invocation.method(
-          #updateFavouriteEventStatus,
+          #updateEventStatus,
           [eventId],
         ),
         returnValueForMissingStub: null,

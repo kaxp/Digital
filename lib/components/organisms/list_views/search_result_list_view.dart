@@ -7,8 +7,8 @@ import 'package:flutter_base_template_1/modules/home/models/events_response.dart
 import 'package:flutter_base_template_1/utils/helpers.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-class EventsListView extends StatelessWidget {
-  const EventsListView({
+class SearchResultListView extends StatelessWidget {
+  const SearchResultListView({
     super.key,
     required this.events,
   });
@@ -22,6 +22,12 @@ class EventsListView extends StatelessWidget {
       shrinkWrap: true,
       itemCount: events.length,
       itemBuilder: (context, index) {
+        final bannerImage = events[index].performers[0].image;
+        final city = events[index].venue.city;
+        final state = events[index].venue.state;
+        final title = events[index].title;
+        final dateTime = events[index].datetimeLocal;
+
         return GestureDetector(
           onTap: () {
             Modular.to.pushNamed(
@@ -41,10 +47,10 @@ class EventsListView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(kSpacingXSmall),
                     child: EventListCell(
-                      imageUrl: events[index].performers[0].image,
-                      city: '${events[index].venue.city}, ${events[index].venue.state}',
-                      title: events[index].title,
-                      dateAndTime: DateFormatter.formattedFullDateAndTimeWithComma(events[index].datetimeLocal),
+                      imageUrl: bannerImage,
+                      city: '$city, $state',
+                      title: title,
+                      dateAndTime: DateFormatter.formattedFullDateAndTimeWithComma(dateTime),
                     ),
                   ),
                   Visibility(

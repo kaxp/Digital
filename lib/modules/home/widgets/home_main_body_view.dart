@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_template_1/components/molecules/loading_overlay/loading_overlay.dart';
 import 'package:flutter_base_template_1/components/molecules/snackbar/custom_snackbar.dart';
-import 'package:flutter_base_template_1/components/organisms/list_views/events_list_view.dart';
+import 'package:flutter_base_template_1/components/organisms/list_views/search_result_list_view.dart';
 import 'package:flutter_base_template_1/modules/home/bloc/home_bloc.dart';
 import 'package:flutter_base_template_1/modules/home/widgets/home_empty_view.dart';
 import 'package:flutter_base_template_1/modules/home/widgets/home_initial_view.dart';
@@ -47,7 +47,7 @@ class HomeMainBodyView extends StatelessWidget {
             physics: const ClampingScrollPhysics(),
             children: [
               state.events.isNotEmpty
-                  ? EventsListView(
+                  ? SearchResultListView(
                       events: state.events,
                     )
                   : const HomeInitialView(),

@@ -8,9 +8,7 @@ class HomeModule extends Module {
   @override
   List<Bind> get binds => [
         Bind<HomeRepo>((_) => HomeRepo()),
-        Bind<HomeBloc>((i) {
-          return HomeBloc();
-        }),
+        Bind<HomeBloc>((_) => HomeBloc()),
         Bind.lazySingleton<SharedPreferencesManager>((i) {
           return SharedPreferencesManager();
         })

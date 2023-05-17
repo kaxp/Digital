@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "bookNow": MessageLookupByLibrary.simpleMessage("Book Now"),
         "comingSoon": MessageLookupByLibrary.simpleMessage("Coming Soon"),
+        "debounceTag": MessageLookupByLibrary.simpleMessage("search"),
         "detailPage": MessageLookupByLibrary.simpleMessage("Event Detail"),
         "homePage": MessageLookupByLibrary.simpleMessage("Events"),
         "invalidClientIdError": MessageLookupByLibrary.simpleMessage(
