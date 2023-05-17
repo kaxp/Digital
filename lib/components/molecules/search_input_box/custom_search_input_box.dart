@@ -2,6 +2,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
+import 'package:flutter_base_template_1/constants/spacing_constants.dart';
 import 'package:flutter_base_template_1/generated/l10n.dart';
 
 class CustomSearchInputBox extends StatefulWidget {
@@ -55,12 +56,6 @@ class _CustomSearchInputBoxState extends State<CustomSearchInputBox> {
   }
 
   @override
-  void dispose() {
-    widget.showSuffixIcon ? widget.controller!.removeListener(() {}) : null;
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.controller,
@@ -75,7 +70,7 @@ class _CustomSearchInputBoxState extends State<CustomSearchInputBox> {
         border: InputBorder.none,
         suffixIcon: widget.controller!.text.length > 0
             ? Container(
-                transform: Matrix4.translationValues(0, -2, 0),
+                transform: Matrix4.translationValues(kSpacingZero, -2, kSpacingZero),
                 child: IconButton(
                   onPressed: () {
                     widget.controller!.clear();
@@ -99,6 +94,16 @@ class _CustomSearchInputBoxState extends State<CustomSearchInputBox> {
   }
 
   void _onChangeWithDebounce(String value) {
-    EasyDebounce.debounce('search', widget.debounceDuration!, () => widget.onChanged?.call(value));
+    EasyDebounce.debounce(
+      S.current.debounceTag,
+      widget.debounceDuration!,
+      () => widget.onChanged?.call(value),
+    );
+  }
+
+  @override
+  void dispose() {
+    widget.showSuffixIcon ? widget.controller!.removeListener(() {}) : null;
+    super.dispose();
   }
 }

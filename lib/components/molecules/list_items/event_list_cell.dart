@@ -26,7 +26,7 @@ class EventListCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: <Widget>[
+      children: [
         ClipRRect(
           borderRadius: const BorderRadius.all(
             Radius.circular(kRadiusXSmall),
@@ -54,7 +54,7 @@ class EventListCell extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: kSpacingMedium),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: [
                 Header2(
                   title: title ?? '',
                   fontFamily: AppFonts.ratBold,

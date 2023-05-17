@@ -11,6 +11,7 @@
     "searchForEvents" : "Search for the latest events, shows, concerts and much more!!!",
     "noResultFound" : "Sorry, no matching result found!\nPlease try searching with a different input.",
     "bookNow" : "Book Now",
-    "comingSoon" : "Coming Soon"
+    "comingSoon" : "Coming Soon",
+    "debounceTag": "search"
 }
   

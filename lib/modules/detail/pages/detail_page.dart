@@ -3,7 +3,7 @@ import 'package:flutter_base_template_1/components/atoms/buttons/default_elevate
 import 'package:flutter_base_template_1/components/atoms/typography/header1.dart';
 import 'package:flutter_base_template_1/components/atoms/typography/header3.dart';
 import 'package:flutter_base_template_1/components/molecules/app_bar/custom_appbar.dart';
-import 'package:flutter_base_template_1/components/molecules/banner/event_detail_banner.dart';
+import 'package:flutter_base_template_1/components/molecules/banners/main_event_banner.dart';
 import 'package:flutter_base_template_1/components/molecules/snackbar/custom_snackbar.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_colors.dart';
 import 'package:flutter_base_template_1/config/themes/assets/app_fonts.dart';
@@ -71,7 +71,7 @@ class _DetailPageState extends State<DetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(
-                      child: EventDetailBanner(
+                      child: MainEventBanner(
                         imageUrl: widget.event.performers[0].image,
                       ),
                     ),

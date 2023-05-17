@@ -179,6 +179,16 @@ class S {
       args: [],
     );
   }
+
+  /// `search`
+  String get debounceTag {
+    return Intl.message(
+      'search',
+      name: 'debounceTag',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
