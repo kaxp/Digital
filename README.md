@@ -24,6 +24,7 @@ This application is developed on Flutter 3.7.6 in Stable channel.
   |   ├── detail
   |   |   ├── bloc/
   |   |   ├── pages/
+  |   |   ├── widgets/  
   |   |   └── detail_module.dart
   |   ├── home
   |   |   ├── bloc/
@@ -59,17 +60,17 @@ This application is developed on Flutter 3.7.6 in Stable channel.
   |-- modules
   |   ├── detail
   |   |   ├── bloc/
-  |   |   └──  pages/
+  |   |   └── pages/
   |   ├── home
   |   |   ├── bloc/
-  |   |   └──  pages/
+  |   |   └── pages/
   |-- networking
-  |   |   └──  http_client_test.dart
+  |   |   └── http_client_test.dart
   |-- test_utils
   |   |   ├── init_test_module_helper.dart
   |   |   └── mock_dio_error.dart
   └── utils
-      └──  dio_error_extension_test.dart
+      └── dio_error_extension_test.dart
 ```
 
 # Project Setup:
@@ -89,7 +90,7 @@ This application is developed on Flutter 3.7.6 in Stable channel.
 
 ### Steps for running the application-
 
-1. Clone the project using command <https://github.com/kaxp/Digital.git>
+1. Clone the project using command `git clone https://github.com/kaxp/Digital.git`
 2. run `flutter pub get`
 3. run `flutter pub run build_runner build`
 4. run the application on android device
@@ -98,7 +99,21 @@ This application is developed on Flutter 3.7.6 in Stable channel.
    - `flutter run` for Simulator
    - `flutter run --release` for physical device
 
+Note: The application is build on Flutter version 3.7.6 in Stable channel. 
+
+
 ### Other Informations
-1. The test coverage is not 100%, there are many classes for which tests are not yet written because of time constraints. Will be updating the repo with new tests :)
+1. The test coverage is not 100%, there are many classes for which tests are not yet written because of time constraint. Will be updating the repo with new tests :)
+2. Some Intended behaviours in the app
+   - On clearing the search input by pressing clear button, the existing state is preserved with/without results.
+   - Searching starts when query length is more than 2.
+
+### Videos
+
+1. <blockquote class="imgur-embed-pub" lang="en" data-id="a/ja43zbT"  ><a href="//imgur.com/a/ja43zbT">Digital iOS </a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+2. <blockquote class="imgur-embed-pub" lang="en" data-id="a/QdiIkCo"  ><a href="//imgur.com/a/QdiIkCo">Digital Android</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
+
+
 
 
