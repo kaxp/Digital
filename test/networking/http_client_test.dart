@@ -1,24 +1,27 @@
 import 'package:flutter_base_template_1/config/flavor_config.dart';
+import 'package:flutter_base_template_1/modules/app/base_app_module.dart';
 import 'package:flutter_base_template_1/networking/models/app_dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import '../test_utils/init_test_module_helper.dart';
+import 'package:modular_test/modular_test.dart';
 
 void main() {
   final expectedBaseParams = <String, dynamic>{
     'client_id': 'sample_client_id_for_mock',
   };
 
-  setUpAll(() async {
+  setUpAll(() {
     FlavorConfig(
       flavor: Flavor.mock,
       values: const FlavorValues(
-        clientId: 'sample_client_id_for_mock',
         baseUrl: '',
+        clientId: '',
       ),
     );
-    await initTestAppModule();
+  });
+
+  setUp(() async {
+    initModule(BaseAppModule());
   });
 
   test(
