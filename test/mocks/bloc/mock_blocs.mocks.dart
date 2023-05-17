@@ -49,14 +49,14 @@ class _FakeDetailState_1 extends _i1.SmartFake implements _i3.DetailState {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockHomeBloc extends _i1.Mock implements _i2.HomeBloc {
-  MockHomeBloc() {
-    _i1.throwOnMissingStub(this);
-  }
-
   @override
   _i2.HomeState get state => (super.noSuchMethod(
         Invocation.getter(#state),
         returnValue: _FakeHomeState_0(
+          this,
+          Invocation.getter(#state),
+        ),
+        returnValueForMissingStub: _FakeHomeState_0(
           this,
           Invocation.getter(#state),
         ),
@@ -65,11 +65,13 @@ class MockHomeBloc extends _i1.Mock implements _i2.HomeBloc {
   _i4.Stream<_i2.HomeState> get stream => (super.noSuchMethod(
         Invocation.getter(#stream),
         returnValue: _i4.Stream<_i2.HomeState>.empty(),
+        returnValueForMissingStub: _i4.Stream<_i2.HomeState>.empty(),
       ) as _i4.Stream<_i2.HomeState>);
   @override
   bool get isClosed => (super.noSuchMethod(
         Invocation.getter(#isClosed),
         returnValue: false,
+        returnValueForMissingStub: false,
       ) as bool);
   @override
   _i4.Future<void> fetchEvents(String? searchString) => (super.noSuchMethod(
@@ -158,14 +160,14 @@ class MockHomeBloc extends _i1.Mock implements _i2.HomeBloc {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockDetailBloc extends _i1.Mock implements _i3.DetailBloc {
-  MockDetailBloc() {
-    _i1.throwOnMissingStub(this);
-  }
-
   @override
   _i3.DetailState get state => (super.noSuchMethod(
         Invocation.getter(#state),
         returnValue: _FakeDetailState_1(
+          this,
+          Invocation.getter(#state),
+        ),
+        returnValueForMissingStub: _FakeDetailState_1(
           this,
           Invocation.getter(#state),
         ),
@@ -174,11 +176,13 @@ class MockDetailBloc extends _i1.Mock implements _i3.DetailBloc {
   _i4.Stream<_i3.DetailState> get stream => (super.noSuchMethod(
         Invocation.getter(#stream),
         returnValue: _i4.Stream<_i3.DetailState>.empty(),
+        returnValueForMissingStub: _i4.Stream<_i3.DetailState>.empty(),
       ) as _i4.Stream<_i3.DetailState>);
   @override
   bool get isClosed => (super.noSuchMethod(
         Invocation.getter(#isClosed),
         returnValue: false,
+        returnValueForMissingStub: false,
       ) as bool);
   @override
   void setInitialPageState(_i6.Event? event) => super.noSuchMethod(
