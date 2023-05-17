@@ -29,8 +29,10 @@ void runMain({
   });
 }
 
-/// A Helper method that is used for initialise app services like
-/// firebase, remote config, or other 3rd party SDK dependences etc.
+/// A Helper method that is used for initialising app services like
+/// firebase, remote config, shared preferences, or other 3rd party SDK 
+/// dependencies.
+/// 
 /// All the services that needs to be initialised at the start of the app
 /// will be added here.
 Future<void> _init({
