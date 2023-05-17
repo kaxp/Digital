@@ -43,6 +43,8 @@ class HomeMainBodyView extends StatelessWidget {
           isLoading: state is HomeLoading,
           child: ListView(
             controller: scrollController,
+            shrinkWrap: true,
+            physics: const ClampingScrollPhysics(),
             children: [
               state.events.isNotEmpty
                   ? EventsListView(
