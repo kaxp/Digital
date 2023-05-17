@@ -61,7 +61,7 @@ class _CustomSearchInputBoxState extends State<CustomSearchInputBox> {
       controller: widget.controller,
       inputFormatters: widget.inputFormatters,
       keyboardType: widget.textInputType,
-      autofocus: true,
+      autofocus: false,
       style: const TextStyle(color: AppColors.backgroundColor),
       cursorColor: AppColors.backgroundColor,
       decoration: InputDecoration(
