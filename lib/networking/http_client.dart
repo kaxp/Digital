@@ -7,8 +7,10 @@ import 'package:flutter_base_template_1/networking/interceptors/request_intercep
 
 /// In this file we will define all of our http clients that
 /// will be used for calling APIs, like
-/// [defaultHttpClient], when user is not authenticated
-/// [authenticationHttpClient], when user is authenticated, etc.
+/// [defaultHttpClient], when user authentication is not required
+/// for calling server APIs.
+/// [authenticationHttpClient], when user authentication is required
+/// for calling server APIs.
 ///
 /// We can also add the base options, headers, data transformers,
 /// interceptors, etc. in the available http clients.
