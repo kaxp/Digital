@@ -1,5 +1,31 @@
 This application is developed on Flutter 3.7.6 in Stable channel.
 
+### Objective
+Write a type ahead (search view with results – Search and Listing screen) against the Seat
+Geek API. The type ahead should update a list of results as the search query changes.
+Results can be tapped to view them on a details screen.
+Requirements
+1. Write a type ahead against the Seat Geek API - (search view with results – Search
+and Listing screen)
+2. Make a detail screen so the user can drill down into a result
+3. Make this flutter app work for both iOS and Android platforms
+
+Optional
+1. Mac Desktop support
+2. The detail screen should allow the user to favourite/unfavorite the event
+3. Type ahead results should reflect the favourited state of each event
+4. Favorited results should be saved between launches of the app
+
+API Information
+
+The endpoint to use on Seat Geek is free and publicly accessible, but you will need to
+register for a Seat Geek account and obtain an API key to use it. Details can be found at
+http://platform.seatgeek.com/
+
+You will pass in the url param of q which will correspond to the search query. For example,
+the below query will give a result set for the term Texas Ranger.
+
+
 # Project tree
 
 ```bash
