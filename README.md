@@ -135,9 +135,8 @@ Note: The application is build on Flutter version 3.7.6 in Stable channel.
    - Searching starts when query length is more than 2.
 
 ### Videos
+![Alt Text](https://github.com/kaxp/Digital/blob/3eb443ed0b9be04021d50338c2eb672da307c325/snapshots/iOS.gif)
 
-1. <blockquote class="imgur-embed-pub" lang="en" data-id="a/ja43zbT"  ><a href="//imgur.com/a/ja43zbT">Digital iOS </a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-2. <blockquote class="imgur-embed-pub" lang="en" data-id="a/QdiIkCo"  ><a href="//imgur.com/a/QdiIkCo">Digital Android</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
 
