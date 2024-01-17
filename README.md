@@ -1,4 +1,4 @@
-This application is developed on Flutter 3.7.6 in Stable channel.
+This application is developed on Flutter 3.7.6 in Stable channel and latest tested on v3.16.3 in Stable channel
 
 ### Objective
 Write a type ahead (search view with results – Search and Listing screen) against the Seat
