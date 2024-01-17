@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
@@ -13,6 +15,8 @@ class HomeBloc extends Cubit<HomeState> {
   HomeBloc() : super(HomeInitial());
   final _homeRepo = Modular.get<HomeRepo>();
   final _sharedPrefs = Modular.get<SharedPreferencesManager>();
+  String? searchQuery;
+  Timer? _timer;
 
   // HomeState getters
   HomeState get _loadedStateWithExistingAvailableData => HomeLoaded(
@@ -22,7 +26,7 @@ class HomeBloc extends Cubit<HomeState> {
         page: state.page,
         totalPage: state.totalPage,
         timeStamp: DateTime.now().millisecondsSinceEpoch,
-      ); 
+      );
 
   HomeState get _loadingMoreStateWithExistingAvailableData => HomeLoadingMore(
         events: state.events,
@@ -146,5 +150,17 @@ class HomeBloc extends Cubit<HomeState> {
         event.isFavourite = true;
       }
     }
+  }
+
+  void onQueryChanged(String query) {
+    searchQuery = query;
+    _debounce(const Duration(milliseconds: 500), () {
+      fetchEvents(query);
+    });
+  }
+
+  void _debounce(Duration duration, void Function() callback) {
+    if (_timer?.isActive ?? false) _timer!.cancel();
+    _timer = Timer(duration, callback);
   }
 }
