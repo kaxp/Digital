@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_base_template_1/components/molecules/app_bar/custom_appbar.dart';
 import 'package:flutter_base_template_1/components/molecules/search_input_box/custom_search_input_box.dart';
@@ -18,8 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? searchQuery;
-  Timer? _timer;
   final _searchFocus = FocusNode();
   final _homeBloc = Modular.get<HomeBloc>();
   late final ScrollController _scrollController;
@@ -57,7 +53,7 @@ class _HomePageState extends State<HomePage> {
         ),
         titleWidget: CustomSearchInputBox(
           hintText: S.current.searchEvents,
-          onChanged: _onQueryChanged,
+          onChanged: _homeBloc.onQueryChanged,
           focusNode: _searchFocus,
           controller: _searchInputController,
           showSuffixIcon: true,
@@ -70,23 +66,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _onQueryChanged(String query) {
-    searchQuery = query;
-    _debounce(const Duration(milliseconds: 500), () {
-      _homeBloc.fetchEvents(query);
-    });
-  }
-
-  void _debounce(Duration duration, void Function() callback) {
-    if (_timer?.isActive ?? false) _timer!.cancel();
-    _timer = Timer(duration, callback);
-  }
-
   void _onEventListScrolledListener() {
     if (_scrollController.position.pixels <= _scrollController.position.maxScrollExtent * 0.8) {
       // When textinput is empty we don't want to call paging API
       if (_searchInputController.text.length > 0) {
-        _homeBloc.loadNextPage(searchQuery);
+        _homeBloc.loadNextPage(_homeBloc.searchQuery);
       }
     }
   }
