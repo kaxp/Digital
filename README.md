@@ -1,4 +1,6 @@
-This application is developed on Flutter 3.7.6 in Stable channel and latest tested on v3.16.3 in Stable channel
+This application is developed on Flutter v3.7.6 in the Stable channel.
+
+> Latest migrated to work on Flutter v3.16.3 in the Stable channel
 
 ### Objective
 Write a type ahead (search view with results – Search and Listing screen) against the Seat
@@ -23,7 +25,11 @@ register for a Seat Geek account and obtain an API key to use it. Details can be
 http://platform.seatgeek.com/
 
 You will pass in the url param of q which will correspond to the search query. For example,
-the below query will give a result set for the term Texas Ranger.
+the below query will give a result set for the term  `Texas Ranger`.
+```
+https://api.seatgeek.com/2/events?client_id=&lt;your client id&gt;&amp;q=Texas+Ranger
+```
+
 
 
 # Project tree
@@ -124,8 +130,6 @@ the below query will give a result set for the term Texas Ranger.
 5. run the application on iOS device
    - `flutter run` for Simulator
    - `flutter run --release` for physical device
-
-Note: The application is build on Flutter version 3.7.6 in Stable channel. 
 
 
 ### Other Informations
