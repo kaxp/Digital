@@ -108,8 +108,8 @@ https://api.seatgeek.com/2/events?client_id=&lt;your client id&gt;&amp;q=Texas+R
 # Project Setup:
 
 - State-management- [flutter_bloc](https://pub.dev/packages/flutter_bloc)
-- Design pattern - atomic design pattern
-- Architecture pattern - MVVM
+- Design pattern - [Atomic design pattern](https://atomicdesign.bradfrost.com/chapter-2/)
+- Architecture pattern - Clean Architecture
 - Navigation - [flutter_modular](https://pub.dev/packages/flutter_modular)
 - Dependency Injection - [flutter_modular](https://pub.dev/packages/flutter_modular)
 - Localization - [intl](https://pub.dev/packages/intl)
